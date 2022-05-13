@@ -1,0 +1,18 @@
+/ {
+    soft-uart {
+        soft_uart_gpio: soft-uart {
+            rockchip,pins = <RK_GPIO3 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>,
+                <RK_GPIO3 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+        };
+    };
+    // GPIO-UART
+    uart_soft {
+        status = "okay";
+        compatible = "schips,soft_uart";
+        // 输入
+        gpio-tx          = <&gpio3 RK_PB5 GPIO_ACTIVE_HIGH>;
+        gpio-rx          = <&gpio3 RK_PA2 GPIO_ACTIVE_HIGH>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&soft_uart_gpio>;
+    };
+};
